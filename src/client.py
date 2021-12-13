@@ -52,8 +52,14 @@ def color_off(command):
 
 
 def engine_command(command):
-    print(command)
-    engine.move(100, 'forward', 1, None)
+    direction = command["direction"]
+    if direction == 1:
+        engine.motorForward(100)
+    elif direction == 0:
+        engine.motorStop()
+    elif direction == 2:
+        engine.motorBackward(100)
+    # engine.move(100, 'forward', 1, None)
     # {'angle': 0, 'direction': 1, 'type': 5}
 
 
@@ -94,5 +100,6 @@ try:
                 sys.stdout.write(message)
                 sys.stdout.flush()
 except ConnectionResetError or KeyboardInterrupt:
+    print('cleaning up...')
     client.close()
     RGBCtrl_1.destroy()

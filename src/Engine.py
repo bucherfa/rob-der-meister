@@ -77,6 +77,12 @@ class Engine:
         else:
             pass
 
+    def motorForward(self, speed):
+        self.motor(1, Dir_forward, speed)
+
+    def motorBackward(self, speed):
+        self.motor(1, Dir_backward, speed)
+
     def move(self, speed, direction, duration, callback):
         self.thread = threading.Thread(target=self.moveSync, args=(speed, direction, duration, callback))
         self.thread.start()
