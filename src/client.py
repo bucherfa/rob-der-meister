@@ -44,13 +44,24 @@ def color_light(command):
 
 def color_off(command):
     side = command["side"]
+    turn_on = command["state"]
     if side == 0:
-        RGBCtrl_1.set_left_off()
-        RGBCtrl_1.set_right_off()
+        if turn_on:
+            RGBCtrl_1.set_left_color(1, 1, 1)
+            RGBCtrl_1.set_right_color(1, 1, 1)
+        else:
+            RGBCtrl_1.set_left_off()
+            RGBCtrl_1.set_right_off()
     elif side == 1:
-        RGBCtrl_1.set_left_off()
+        if turn_on:
+            RGBCtrl_1.set_left_color(1, 1, 1)
+        else:
+            RGBCtrl_1.set_left_off()
     elif side == 2:
-        RGBCtrl_1.set_right_off()
+        if turn_on:
+            RGBCtrl_1.set_right_color(1, 1, 1)
+        else:
+            RGBCtrl_1.set_right_off()
     else:
         print("invalid side: " + str(side))
 
