@@ -47,18 +47,26 @@ class RGBctrl(threading.Thread):
 
     def set_left_color(self, r, g, b):
 
-        r_val = self.map(r, 0, 255, 100, 0)  # Map 0-255 to 0-100
-        g_val = self.map(g, 0, 255, 100, 0)
-        b_val = self.map(b, 0, 255, 100, 0)
+        #r_val = self.map(r, 0, 255, 100, 0)  # Map 0-255 to 0-100
+        #g_val = self.map(g, 0, 255, 100, 0)
+        #b_val = self.map(b, 0, 255, 100, 0)
+
+        r_val = (1-r) * 100
+        g_val = (1-g) * 100
+        b_val = (1-b) * 100
 
         self.l_pwmR.ChangeDutyCycle(r_val)  # Change the duty cycle,change rhe color brightness.
         self.l_pwmG.ChangeDutyCycle(g_val)
         self.l_pwmB.ChangeDutyCycle(b_val)
 
     def set_right_color(self, r, g, b):
-        r_val = self.map(r, 0, 255, 100, 0)  # Map 0-255 to 0-100
-        g_val = self.map(g, 0, 255, 100, 0)
-        b_val = self.map(b, 0, 255, 100, 0)
+        #r_val = self.map(r, 0, 255, 100, 0)  # Map 0-255 to 0-100
+        #g_val = self.map(g, 0, 255, 100, 0)
+        #b_val = self.map(b, 0, 255, 100, 0)
+
+        r_val = (1-r) * 100
+        g_val = (1-g) * 100
+        b_val = (1-b) * 100
 
         self.r_pwmR.ChangeDutyCycle(r_val)  # Change the duty cycle,change rhe color brightness.
         self.r_pwmG.ChangeDutyCycle(g_val)
